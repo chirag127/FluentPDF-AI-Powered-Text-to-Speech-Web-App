@@ -237,6 +237,11 @@ class PDF2SpeechApp {
         try {
             this.showProcessingSection();
 
+            // Display file name
+            document.getElementById(
+                "fileNameDisplay"
+            ).textContent = `File: ${file.name}`;
+
             // Extract text from PDF
             this.updateProgress("Extracting text from PDF...", 0);
             const extractionResult = await pdfProcessor.extractTextFromPDF(
@@ -606,12 +611,17 @@ class PDF2SpeechApp {
     updateProgress(text, percentage) {
         const progressFill = document.getElementById("progressFill");
         const progressText = document.getElementById("progressText");
+        const progressPercentage =
+            document.getElementById("progressPercentage");
 
         if (progressFill) {
             progressFill.style.width = percentage + "%";
         }
         if (progressText) {
             progressText.textContent = text;
+        }
+        if (progressPercentage) {
+            progressPercentage.textContent = Math.round(percentage) + "%";
         }
     }
 
