@@ -1,304 +1,159 @@
-# PDF2Speech - Convert Readable Speakable PDF
+# FluentPDF: AI-Powered Text-to-Speech Web Application
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App/ci.yml?style=flat-square&label=Build)](https://github.com/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App/actions/workflows/ci.yml)
+[![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App?style=flat-square)](https://codecov.io/gh/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App)
+[![Language](https://img.shields.io/github/languages/top/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App?style=flat-square&color=3A4E9A)](https://github.com/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App)
+[![License](https://img.shields.io/github/license/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App?style=flat-square&color=FF6600)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App?style=flat-square)](https://github.com/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App)
 
-A modern, client-side web application that transforms technical and academic PDFs into Text-to-Speech (TTS) optimized content using Google's Gemini AI. Perfect for use with applications like Moon+ Reader Pro.
+<p align="center">
+  <a href="https://github.com/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App">
+    <img src="https://img.shields.io/badge/Star%20%E2%98%85%EF%B8%8F%20this%20Repo-blue?style=flat-square" alt="Star this Repo"/>
+  </a>
+</p>
 
-## 🌟 Features
+--- 
 
-- **AI-Powered Content Transformation**: Uses Google Gemini 2.5 Flash (or Pro) to intelligently rewrite content for TTS consumption
-- **Code-to-Description**: Automatically converts code snippets into natural language descriptions of functionality
-- **Figure & Image Handling**: Transforms captions and image references into descriptive text
-- **Smart Chunking**: Intelligently splits large PDFs to respect API token limits
-- **Batch Processing**: Sequentially processes chunks and seamlessly reassembles content
-- **Privacy-First**: All API keys stored locally in browser localStorage - no server uploads
-- **Customizable**: Fine-tune the AI transformation with custom system prompts
-- **Mobile-Ready**: Works on any device with a modern web browser
-- **Beautiful UI**: Modern, responsive design with intuitive navigation
-- **Zero Dependencies**: Pure HTML, CSS, and vanilla JavaScript - minimal deployment costs
+**FluentPDF** is a cutting-edge web application engineered to bridge the accessibility gap by transforming static PDF documents into highly natural, context-aware spoken audio streams.
+This system couples robust, high-performance PDF parsing with modern Text-to-Speech (TTS) synthesis, optimized for low-latency web delivery via WebAssembly modules.
 
-## 📋 System Requirements
-
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Google Gemini API key (free tier available)
-- Text-based PDF (OCR not required)
-
-## 🚀 Quick Start
+## 📐 Architecture Overview
 
-### 1. Get Your Gemini API Key
-
-1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy your API key
-
-**Free tier includes**: 15 requests per minute
-
-### 2. Access the Application
-
-1. Open `index.html` in your web browser
-2. Go to **Settings** page
-3. Paste your Gemini API key in the "API Configuration" section
-4. Click "Test Connection" to verify your API key works
-5. (Optional) Customize your processing preferences
-
-### 3. Process Your PDF
-
-1. Go to **Home** page
-2. Click "Choose File" or drag & drop your PDF
-3. Wait for processing to complete
-4. Download your TTS-optimized PDF
-5. Use it with your favorite TTS reader app
-
-## 🎯 Configuration Guide
-
-### API Configuration
-
-| Setting | Description | Default |
-|---------|-------------|---------|
-| **API Key** | Your Google Gemini API key (required) | Empty |
-| **Model** | Which Gemini model to use | Gemini 2.5 Flash |
-
-### Processing Configuration
-
-| Setting | Description | Default | Range |
-|---------|-------------|---------|-------|
-| **Chunk Size** | Tokens per chunk (lower = safer, higher = faster) | 4000 | 500-20000 |
-| **Temperature** | Creativity level (0=precise, 2=creative) | 0.7 | 0-2 |
-| **Max Output Tokens** | Maximum response length per chunk | 2000 | 100-8000 |
-
-### System Prompt Customization
-
-The system prompt controls how Gemini transforms your content. The default prompt is optimized for:
-- Converting code examples to descriptions
-- Transforming image captions into text
-- Ensuring output is speaker-friendly
-- Maintaining technical accuracy
-
-You can customize it for your specific needs. For example:
-- Academic papers: Focus on clear explanations
-- Programming books: Emphasize code descriptions
-- Manuals: Maintain structured formats
-
-## 🔐 Privacy & Security
-
-✅ **Privacy-First Design**:
-- Your API key is stored ONLY in your browser's localStorage
-- PDFs are NOT uploaded to any server
-- No data collection or tracking
-- All processing happens between your browser and Google's API
-
-✅ **Security Best Practices**:
-- Use HTTPS when accessing the application
-- Keep your browser up to date
-- Never share your API key
-- Clear browser data if using a shared computer
-- Rotate your API key periodically
-
-## 📱 Supported Models
-
-### Recommended for Most Users
-- **Gemini 2.5 Flash** (Default)
-  - Fastest response times
-  - Most cost-effective
-  - Excellent quality
-  - Best for general use
-
-### Alternative Options
-- **Gemini 2.5 Pro**: More capable, slower, higher cost
-- **Gemini 2.0 Flash**: Stable, reliable, good balance
-- **Gemini 2.5 Flash Lite**: Lightweight, faster but less capable
-
-## 💡 Tips for Best Results
-
-1. **Start with Default Settings**: The default configuration is optimized for most PDFs
-2. **Test First**: Process a small section first to preview the output style
-3. **Adjust Temperature**: 
-   - Lower (0.5-0.7) for consistent, predictable output
-   - Higher (0.8-1.0) for more varied, creative descriptions
-4. **Chunk Size**: 
-   - Smaller (2000-3000) for technical content
-   - Larger (4000-5000) for narrative text
-5. **Monitor Usage**: Free tier has rate limits; paid plans available for higher throughput
-
-## 🛠️ Technical Stack
-
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
-- **PDF Processing**: PDF.js (text extraction)
-- **PDF Generation**: jsPDF (output creation)
-- **AI Engine**: Google Gemini REST API
-- **Storage**: Browser localStorage
-- **Hosting**: Completely client-side - works anywhere!
-
-## 📁 Project Structure
-
-```
-convert-readable-spokable-pdf/
-├── index.html              # Main HTML with all pages
-├── styles.css              # Modern, responsive styling
-├── js/
-│   ├── settings.js         # Settings management & localStorage
-│   ├── api.js              # Gemini API integration
-│   ├── pdf-processor.js    # PDF extraction & chunking
-│   └── app.js              # Main application orchestration
-└── README.md               # This file
-```
-
-## 🔄 How It Works
-
-```
-1. PDF Upload
-   ↓
-2. Text Extraction (PDF.js)
-   ↓
-3. Content Analysis & Chunking
-   ↓
-4. Sequential API Processing
-   ├─ Chunk 1 → Gemini API → Processed Result
-   ├─ Chunk 2 → Gemini API → Processed Result
-   ├─ Chunk N → Gemini API → Processed Result
-   ↓
-5. Content Reassembly
-   ↓
-6. PDF Generation (jsPDF)
-   ↓
-7. Download
-```
-
-## 🐛 Troubleshooting
-
-### "API Key Not Valid"
-- Verify your API key is correct (copy from Google AI Studio)
-- Ensure you haven't accidentally included spaces
-- Test connection using the "Test Connection" button
-- Check if your free tier quota is exceeded
-
-### "Rate Limited (429 Error)"
-- Free tier: 15 requests per minute
-- Wait a moment and try again
-- Consider upgrading to paid tier for higher limits
-- The app has automatic retry logic with exponential backoff
-
-### "PDF Extraction Failed"
-- Ensure the PDF is text-based (not scanned images)
-- Try with a smaller PDF first
-- Check browser console for detailed error messages
-- Supported PDF.js versions require modern browsers
-
-### "Processing Seems Stuck"
-- Check internet connection
-- Verify API key is still valid
-- Try with smaller chunk size
-- Check browser console for errors
-
-### "Downloaded PDF is Empty"
-- Ensure processing completed successfully
-- Check the preview section first
-- Try downloading again
-- Contact support if issue persists
-
-## 📊 API Usage & Costs
-
-### Google AI Studio Free Tier
-- **15 requests per minute** (15 RPM limit)
-- **1.5M input tokens per day**
-- **No cost**
-- Perfect for testing and small-scale use
-
-### Google Cloud Paid Plans
-- Available on Google Cloud Console
-- Pay-as-you-go pricing
-- Higher rate limits
-- Production-ready
-
-### Optimizing API Usage
-- Use appropriate chunk sizes (not too small)
-- Process during off-peak times
-- Consider batch processing for large volumes
-- Monitor your usage in Google Cloud Console
-
-## 🎓 Use Cases
-
-1. **Academic Reading**: Transform papers into audio format
-2. **Coding Books**: Convert programming examples to descriptions
-3. **Technical Manuals**: Create speaker-friendly versions
-4. **Research Documents**: Enable multitasking reading
-5. **Accessibility**: Better support for screen readers
-
-## 🤝 Contributing
-
-Contributions welcome! Areas for enhancement:
-- Additional AI model integrations
-- Enhanced error handling
-- Performance optimizations
-- UI/UX improvements
-- Documentation expansion
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
-## 📞 Support & Contact
-
-- **Report Bugs**: [GitHub Issues](https://github.com/chirag127/convert-readable-spokable-pdf/issues)
-- **Feature Requests**: [GitHub Discussions](https://github.com/chirag127/convert-readable-spokable-pdf/discussions)
-- **Email**: support@pdf2speech.dev
-- **GitHub**: [convert-readable-spokable-pdf](https://github.com/chirag127/convert-readable-spokable-pdf)
-
-## ⚠️ Important Notes
-
-1. **API Key Safety**: Never commit your API key to version control
-2. **Daily Limits**: Free tier has daily token limits
-3. **PDF Quality**: Works best with well-formatted, text-based PDFs
-4. **Browser Storage**: localStorage has size limits (~5-10MB per domain)
-5. **Browser Compatibility**: Requires modern browser with ES6 support
-
-## 🚀 Deployment
-
-### Deploy to GitHub Pages (Free)
-1. Fork this repository
-2. Rename to `yourusername.github.io` (optional)
-3. Access via `https://yourusername.github.io/convert-readable-spokable-pdf/`
-4. Or enable GitHub Pages in repository settings
-
-### Deploy to Netlify (Free)
-1. Connect your GitHub repository
-2. Set build command: `echo "No build needed"`
-3. Published directory: `/`
-4. Deploy automatically on push
-
-### Deploy to Vercel (Free)
-1. Connect your GitHub repository
-2. Use default settings
-3. Deploy automatically
-
-### Self-Host
-1. Clone repository
-2. Serve over HTTPS
-3. Works on any static file server (Apache, Nginx, etc.)
-
-## 📈 Future Roadmap
-
-- [ ] Batch processing multiple PDFs
-- [ ] More AI model integrations (Claude, etc.)
-- [ ] Cloud sync for settings
-- [ ] Advanced prompt templates
-- [ ] Export to multiple formats (EPUB, DOCX)
-- [ ] Real-time preview
-- [ ] API usage analytics dashboard
-- [ ] Multi-language support
-
-## 📄 License & Attribution
-
-MIT License - Feel free to use, modify, and distribute
-
-## 🙏 Acknowledgments
-
-- Google Gemini API for powerful AI capabilities
-- PDF.js for reliable PDF processing
-- jsPDF for PDF generation
-- The open-source community
+The application utilizes a modern micro-frontend approach, ensuring feature isolation and rapid iteration. Core document processing leverages WebAssembly (WASM) for near-native speed in the browser, offloading heavy computation from the main JavaScript thread.
+
+mermaid
+graph TD
+    A[User Interface: React/Vite] --> B{Client-Side Parsing: PDF.js / WASM Module};
+    B --> C[Extracted Text Content];
+    C --> D{AI Orchestration Layer: Web Worker}; 
+    D -- Sanitize & Contextualize --> E[Final Text Chunks];
+    E --> F[Browser Native Web Speech API / External TTS Service];
+    F --> G(High-Fidelity Audio Output);
+    
+    subgraph Backend Service (Optional)
+        H[Metadata & History Storage]
+    end
+    
+    D -. API Call .-> H
+
+
+## 📚 Table of Contents
+1.  [Key Features](#-key-features)
+2.  [Technology Stack](#-technology-stack)
+3.  [Development Workflow](#-development-workflow)
+4.  [Contributing](#-contributing)
+5.  [Agent Directives (System Context)](#-ai-agent-directives-system-context)
+
+## ✨ Key Features
+
+*   **High-Fidelity TTS:** Utilization of the latest Web Speech Synthesis voices for superior auditory experience.
+*   **PDF Structure Awareness:** Intelligent parsing that respects document headings and section breaks for meaningful narration.
+*   **Performance Critical:** Core logic containerized and optimized using **WebAssembly** for rapid processing.
+*   **Accessibility First:** Designed to WCAG standards, providing high utility for visually impaired users.
+*   **Type-Safe Development:** Built entirely in **TypeScript** for compile-time safety and long-term maintainability.
+
+## 🚀 Technology Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19, TypeScript 5.x, Vite 5, Tailwind CSS v4 |
+| **Core Logic** | WebAssembly (Rust/AssemblyScript compilation target) |
+| **State Management**| Signals (Standardized) |
+| **Testing** | Vitest (Unit/Integration), Playwright (E2E) |
+| **Linting/Formatting**| Biome (Unified toolchain) |
+
+## 🛠️ Development Workflow
+
+This project adheres to the **Apex Development Principles** enforced by integrated CI/CD pipelines.
+
+### Prerequisites
+Ensure Node.js (v20+), npm/uv, and the required build tools are installed.
+
+### Setup
+
+bash
+# 1. Clone the repository
+git clone https://github.com/chirag127/FluentPDF-AI-Powered-Text-to-Speech-Web-App.git
+cd FluentPDF-AI-Powered-Text-to-Speech-Web-App
+
+# 2. Install Dependencies using uv (If applicable for backend/shared modules) or npm
+npm install
+# or:
+uv sync
+
+
+### Execution Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Start the Vite development server with Hot Module Replacement. |
+| `npm run build` | Compile production-ready assets, including WASM bundling. |
+| `npm test` | Run Vitest unit and component tests. |
+| `npm run test:e2e` | Execute end-to-end scenarios using Playwright. |
+| `npx @biomejs/biome check .` | Comprehensive linting and formatting check. |
+
+### Core Principles
+
+*   **SOLID:** Strict adherence to Single Responsibility and Interface Segregation principles in component design.
+*   **DRY (Don't Repeat Yourself):** Abstract common parsing and speech-handling logic into reusable utility modules.
+*   **YAGNI (You Ain't Gonna Need It):** Only implement features required for immediate high-value accessibility outcomes.
+
+## 🤖 AI Agent Directives (System Context)
+
+<details>
+<summary><strong>APEX AGENT INSTRUCTIONS (DECEMBER 2025)</strong></summary>
+
+# SYSTEM: APEX TECHNICAL AUTHORITY & ELITE ARCHITECT (DECEMBER 2025 EDITION)
+
+## 1. IDENTITY & PRIME DIRECTIVE
+**Role:** You are a Senior Principal Software Architect and Master Technical Copywriter with **40+ years of elite industry experience**. You operate with absolute precision, enforcing FAANG-level standards and the wisdom of "Managing the Unmanageable."
+**Context:** Current Date is **December 2025**. You are building for the 2026 standard.
+**Output Standard:** Deliver **EXECUTION-ONLY** results. No plans, no "reporting"—only executed code, updated docs, and applied fixes.
+**Philosophy:** "Zero-Defect, High-Velocity, Future-Proof."
 
 ---
 
-**Made with ❤️ for accessibility and innovation**
+## 2. INPUT PROCESSING & COGNITION
+*   **SPEECH-TO-TEXT INTERPRETATION PROTOCOL:**
+    *   **Context:** User inputs may contain phonetic errors (homophones, typos).
+    *   **Semantic Correction:** **STRICTLY FORBIDDEN** from executing literal typos. You must **INFER** technical intent based on the project context (`FluentPDF-AI-Powered-Text-to-Speech-Web-App`).
+    *   **Logic Anchor:** Treat the `README.md` as the **Single Source of Truth (SSOT)**.
+*   **MANDATORY MCP INSTRUMENTATION:**
+    *   **No Guessing:** Do not hallucinate APIs. Focus on browser/WASM capabilities first.
+    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards**, especially regarding **Browser TTS Benchmarks**, **WASM Performance Gains**, and **Accessibility APIs**.
+    *   **Validation:** Use `docfork` to verify *every* external API signature (e.g., Web Speech API constraints).
+    *   **Reasoning:** Engage `clear-thought-two` to architect complex parsing/TTS synchronization flows *before* writing code.
 
-Last Updated: November 2025
+---
+
+## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
+**Directives:** Detect the project type (Web/Frontend) and apply the corresponding **Apex Toolchain**.
+
+*   **PRIMARY SCENARIO: WEB / APP / GUI (Modern Frontend)**
+    *   **Stack:** **TypeScript (Strict)**, **Vite 7** (for bundling/HMR), **TailwindCSS v4** (Utility-first styling), **Tauri v2** (If native compilation is required, otherwise pure browser focus). Focus on **Client-Side Performance**.
+    *   **Lint/Test:** **Biome** (Speed/Format) + **Vitest** (Unit) + **Playwright** (E2E).
+    *   **Architecture:** Feature-Sliced Design (FSD) principles for component organization. Core focus on minimal main thread blocking.
+
+## 4. VERIFICATION & GUARANTEES
+*   **Type Safety:** All new TypeScript code must use `strict: true` settings.
+*   **Performance Guardrail:** Any function handling PDF rendering or text segmentation must be benchmarked against the **500KB PDF Load Time Target (under 1.5 seconds)**.
+*   **Code Review Standard:** All PRs must pass Biome checks and achieve **90%+** unit test coverage on modified modules.
+
+</details>
+
+## 🤝 Contributing
+
+We welcome contributions that enhance performance, fidelity, or accessibility. Please adhere to the following professional standards:
+
+1.  **Fork** the repository.
+2.  Create a descriptive feature branch (e.g., `feat/improve-wasm-parser`).
+3.  Ensure all new code passes Biome checks (`npx @biomejs/biome check --apply .`).
+4.  Submit a Pull Request referencing any relevant issues.
+
+Refer to the `.github/CONTRIBUTING.md` for detailed guidelines.
+
+## 🛡️ Security
+
+This project handles external file input. Security is paramount. All input sanitization against XSS vectors during text extraction and before passing to speech synthesis APIs is mandatory.
+
+See `.github/SECURITY.md` for reporting vulnerabilities.
