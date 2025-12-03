@@ -1,0 +1,29 @@
+# Dependency & Build Artifacts
+/node_modules
+/dist
+/build
+.pnpm-debug.log*
+
+# Vite specific
+.vite-inspect
+
+# TypeScript / IDE
+*.tsbuildinfo
+.vscode/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Source Map (If generating for production)
+*.map
+
+# Testing / Coverage
+/coverage
+
+# WebAssembly (if applicable)
+*.wasm
+
+# Static analysis outputs
+.ruff_cache/
+.biome.jsoncache
